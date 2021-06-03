@@ -86,7 +86,24 @@ class CommentForm extends Component {
                             </div>
                             <div className="form-group">
                                 <Label htmlFor="author">Your Name</Label>
-                                <Control.text model=".author" id="author" name="author" placeholder="Your Name" className="form-control"/>
+                                <Control.text model=".author" id="author" name="author" 
+                                placeholder="Your Name" 
+                                className="form-control"
+                                    validators={{
+                                        minLength: minLength(2),
+                                        maxLength: maxLength(15)
+                                    }}
+                                />
+                                <Errors
+                                    className="text-danger"
+                                    model=".author"
+                                    show="touched"
+                                    component="div"
+                                    messages={{
+                                        minLength: 'Must be at least 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                    }}
+                                />
                             </div>
                             <div className="form-group">
                                 <Label htmlFor="text">Comment</Label>
